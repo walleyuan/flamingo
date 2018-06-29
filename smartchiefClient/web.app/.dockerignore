@@ -1,0 +1,13 @@
+.git
+.editorconfig
+.gitattributes
+.gitignore
+npm-debug.log
+
+# General
+.idea
+.DS_Store
+
+# Project Specific
+node_modules
+dist

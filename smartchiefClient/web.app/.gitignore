@@ -1,0 +1,16 @@
+﻿# General
+.idea
+.DS_Store
+npm-debug.log
+.nyc_output
+coverage
+
+# Project Specific
+node_modules
+.idea
+dist
+.chrome
+.vscode
+yarn.lock
+yarn-error.log
+package-lock.json
