@@ -2,7 +2,7 @@
 
 const express = require('express')
 const app = express();
-const obj = require("./getObjectsFromImg");
+const obj = require("./src/getObjectsFromImg");
 
 var path = require('path')
 var serveStatic = require('serve-static')
