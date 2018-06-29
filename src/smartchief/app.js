@@ -4,18 +4,21 @@ const express = require('express')
 const app = express();
 const obj = require("./getObjectsFromImg");
 
+var path = require('path')
+var serveStatic = require('serve-static')
 
 //TODO: Get food from image via azure cognitive service.
+//-----------------------------------------------------------------------
+//Demo
+//[1] https://www.freeimageslive.co.uk/files/images009/apple.preview.jpg
+//-----------------------------------------------------------------------
 app.get('/', (req, res) => {
+  console.log(req.query.img);
   obj.getFoods(req.query.img, res);
 })
 
-// app.post('/', function (req, res) {
-//   var data = obj.getFoods();
-//   res.send(data);
-// })
-
 //starts application.
+app.use(serveStatic(path.join(__dirname, 'assets')))
 app.listen(3000, () => {
 
   var fs = require('fs');
@@ -24,7 +27,6 @@ app.listen(3000, () => {
     if (err) throw err;
     console.log(data);
   });
-
   console.log('APP listening on port 3000!')
 })
 
