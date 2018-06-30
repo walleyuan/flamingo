@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from 'components/home/actions';
@@ -30,11 +31,13 @@ export class HomeContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Home
         uploadPhoto={this.uploadPhoto}
         fileChangedHandler={this.fileChangedHandler}
         setInputRef={this.setInputRef}
+        foodList={this.props.foodList}
       />
     );
   }
@@ -42,6 +45,7 @@ export class HomeContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    foodList: state.home.foodList,
   };
 }
 
@@ -51,6 +55,10 @@ function mapDispatchToProps(dispatch) {
       uploadPhoto: bindActionCreators(actions.uploadPhoto, dispatch), 
     },
   };
+}
+
+HomeContainer.propTypes = {
+  foodList: PropTypes.arrayOf(PropTypes.shape(PropTypes.any)),
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

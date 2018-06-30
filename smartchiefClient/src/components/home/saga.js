@@ -4,8 +4,8 @@ import { setFoodList } from 'components/home/actions';
 import { postPhoto} from 'components/home/api';
 
 export function* uploadPhoto(photo) {
-  const response = yield call(postPhoto, photo);
-  yield put(setFoodList(response));
+  let response = yield call(postPhoto, photo);
+  yield put(setFoodList(response.data.foodList));
 }
 
 export default function* homeSaga() {

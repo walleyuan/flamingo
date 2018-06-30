@@ -1,8 +1,10 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
+import { ListItem, List, ListItemIcon, ListItemText } from 'material-ui/List';
 import FileUpload from 'material-ui-icons/FileUpload';
+import CheckCircleIcon from 'material-ui-icons/CheckCircle';
 
 const STYLES = {
   fileinput: {
@@ -24,12 +26,33 @@ const homeStyles = theme => ({
     color: theme.palette.common.white,
     backgroundColor: theme.palette.primary.main,
   },
+  list: {
+    maxWidth: '100%',
+    textAlign: 'center',
+    // maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
 });
 
 export function Home(props) {
-  const { classes } = props;
+  const { classes, foodList } = props;
+  const foodListAll = Object.entries(foodList).map((item) => (<ListItem>
+    <ListItemIcon>
+    <CheckCircleIcon />
+  </ListItemIcon>
+  <ListItemText primary={item} />
+  </ListItem>
+  ));
+  // const foodListAll = foodList.map(item=> (<ListItem>
+  //   <ListItemIcon>
+  //         <CheckCircleIcon />
+  //       </ListItemIcon>
+  //       <ListItemText primary={item.value} />
+  //       </ListItem>
+  //       ))
   return (
     <div className={classes.home}>
+    <div>
       <input
         ref={props.setInputRef}
         style={STYLES.fileinput}
@@ -45,14 +68,20 @@ export function Home(props) {
         Upload Photo
         <FileUpload className={classes.rightIcon} />
       </Button>
+      </div>
+      <div className={classes.list}>
+      {foodListAll}
+      </div>          
     </div>
   );
 }
 
 Home.propTypes = {
+  foodList: PropTypes.arrayOf(PropTypes.shape(PropTypes.any)),
 };
 
 Home.defaultProps = {
+  foodList: [],
 };
 
 export default withStyles(homeStyles, { withTheme: true })(Home);

@@ -1,13 +1,10 @@
 import initialState from 'components/home/initialState';
 import * as actionTypes from 'components/home/actionTypes';
 
-export default function homeReducer(state = initialState, action) {
+export default function homeReducer(state = initialState.home, action) {
   switch (action.type) {
     case actionTypes.SET_FOOD_LIST:
-      foodList = [
-        ...state.foodList,
-        action.payload,
-      ];
+      const foodList = action.list;
       return {
         ...state,
         foodList,
