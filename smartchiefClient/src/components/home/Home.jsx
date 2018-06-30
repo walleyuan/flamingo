@@ -5,6 +5,8 @@ import Button from 'material-ui/Button';
 import { ListItem, List, ListItemIcon, ListItemText } from 'material-ui/List';
 import FileUpload from 'material-ui-icons/FileUpload';
 import CheckCircleIcon from 'material-ui-icons/CheckCircle';
+import Logo from 'Images/logo.jpg'
+import ButtonImage from 'Images/button.jpg'
 
 const STYLES = {
   fileinput: {
@@ -53,6 +55,9 @@ export function Home(props) {
   return (
     <div className={classes.home}>
     <div>
+      <img src={Logo} />
+      <br />
+
       <input
         ref={props.setInputRef}
         style={STYLES.fileinput}
