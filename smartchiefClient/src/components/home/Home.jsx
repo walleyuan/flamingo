@@ -7,6 +7,8 @@ import FileUpload from 'material-ui-icons/FileUpload';
 import CheckCircleIcon from 'material-ui-icons/CheckCircle';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import Logo from 'Images/logo.jpg';
+import ButtonImage from 'Images/button.jpg';
 
 const STYLES = {
   fileinput: {
@@ -60,6 +62,9 @@ export function Home(props) {
   return (
     <div className={classes.home}>
     <div>
+      <img src={Logo} />
+      <br />
+
       <input
         ref={props.setInputRef}
         style={STYLES.fileinput}
@@ -82,7 +87,7 @@ export function Home(props) {
           <Paper className={classes.paper}>{Object.keys(foodList).length !== 0 ? 
       <img
         alt="Your food shelf"
-        src="https://s3-ap-southeast-2.amazonaws.com/smartchef/11.jpg"
+        src="https://previews.123rf.com/images/kert/kert1102/kert110200003/8856730-fruit-and-vegetables-in-the-fridge.jpg"
         className={classes.image}
         />
         : null }</Paper>
