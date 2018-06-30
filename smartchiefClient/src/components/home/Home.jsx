@@ -5,6 +5,10 @@ import Button from 'material-ui/Button';
 import { ListItem, List, ListItemIcon, ListItemText } from 'material-ui/List';
 import FileUpload from 'material-ui-icons/FileUpload';
 import CheckCircleIcon from 'material-ui-icons/CheckCircle';
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
+import Logo from 'Images/logo.jpg';
+import ButtonImage from 'Images/button.jpg';
 
 const STYLES = {
   fileinput: {
@@ -33,31 +37,39 @@ const homeStyles = theme => ({
   },
   list: {
     maxWidth: '100%',
-    textAlign: 'center',
-    // maxWidth: 360,
+    textAlign: 'left',
     backgroundColor: theme.palette.background.paper,
   },
+  icon: {
+    color: theme.palette.primary.main,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  image: {
+    width: '100%',
+  }
 });
 
 export function Home(props) {
   const { classes, foodList } = props;
   const foodListAll = Object.entries(foodList).map((item) => (<ListItem>
     <ListItemIcon>
-    <CheckCircleIcon />
+    <CheckCircleIcon className={classes.icon}/>
   </ListItemIcon>
-  <ListItemText primary={item} />
+  <ListItemText>
+    {item[0] + ': ' + item[1]}
+  </ListItemText>
   </ListItem>
   ));
-  // const foodListAll = foodList.map(item=> (<ListItem>
-  //   <ListItemIcon>
-  //         <CheckCircleIcon />
-  //       </ListItemIcon>
-  //       <ListItemText primary={item.value} />
-  //       </ListItem>
-  //       ))
   return (
     <div className={classes.home}>
     <div>
+      <img src={Logo} />
+      <br />
+
       <input
         ref={props.setInputRef}
         style={STYLES.fileinput}
@@ -75,11 +87,25 @@ export function Home(props) {
       </Button>
       </div>
       <div className={classes.list}>
-        {foodListAll}
+      <Grid container spacing={24}>
+      <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>{Object.keys(foodList).length !== 0 ? 
+      <img
+        alt="Your food shelf"
+        src="https://previews.123rf.com/images/kert/kert1102/kert110200003/8856730-fruit-and-vegetables-in-the-fridge.jpg"
+        className={classes.image}
+        />
+        : null }</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>{foodListAll}</Paper>
+        </Grid>
+      </Grid>
       </div>
       <div id="spinner" style={STYLES.spinnerDiv}>
           {props.loading? 'Loading...': ''}
-      </div>          
+               
+      </div>
     </div>
   );
 }
@@ -90,6 +116,7 @@ Home.propTypes = {
 
 Home.defaultProps = {
   foodList: [],
+  picture: {},
 };
 
 export default withStyles(homeStyles, { withTheme: true })(Home);
