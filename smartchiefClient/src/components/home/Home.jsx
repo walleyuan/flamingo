@@ -19,7 +19,12 @@ const STYLES = {
     position: 'absolute',
     zIndex: -1,
   },
-}
+  spinnerDiv: {
+    fontSize: 'xx-large',
+    color: '#F24DC9',
+    margin: '20px'
+  }
+};
 
 const homeStyles = theme => ({
   home: {
@@ -96,7 +101,11 @@ export function Home(props) {
           <Paper className={classes.paper}>{foodListAll}</Paper>
         </Grid>
       </Grid>
-      </div>          
+      </div>
+      <div id="spinner" style={STYLES.spinnerDiv}>
+          {props.loading? 'Loading...': ''}
+               
+      </div>
     </div>
   );
 }
