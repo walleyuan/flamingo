@@ -2,10 +2,14 @@
 
 const express = require('express')
 const app = express();
-const obj = require("./src/getObjectsFromImg");
+const getFoodFromImageUrl = require("./src/getFoodFromImageUrl");
 
 var path = require('path')
 var serveStatic = require('serve-static')
+
+var cors = require('cors');
+app.use(cors());
+
 
 //TODO: Get food from image via azure cognitive service.
 //-----------------------------------------------------------------------
@@ -14,7 +18,7 @@ var serveStatic = require('serve-static')
 //-----------------------------------------------------------------------
 app.get('/', (req, res) => {
   console.log(req.query.img);
-  obj.getFoods(req.query.img, res);
+  getFoodFromImageUrl(req.query.img, res);
 })
 
 //starts application.

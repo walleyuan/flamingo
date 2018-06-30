@@ -45,8 +45,8 @@
               "expose": "components"
             },
             {
-              "src": "./src/images",
-              "expose": "images"
+              "src": "./src/shared",
+              "expose": "shared"
             }
           ]
         ]
