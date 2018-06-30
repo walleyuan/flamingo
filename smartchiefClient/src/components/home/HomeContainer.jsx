@@ -22,22 +22,24 @@ export class HomeContainer extends React.Component {
     const file = event.target.files[0];
     debugger;
     this.props.actions.uploadPhoto(file);
+    this.setState({
+      photo: file,
+    });
   }
   
   uploadPhoto = (e, file) => {
-  //  setTimeout(() => {
     this.fileInput.click();
-  //  }, 200);
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state.photo);
     return (
       <Home
         uploadPhoto={this.uploadPhoto}
         fileChangedHandler={this.fileChangedHandler}
         setInputRef={this.setInputRef}
         foodList={this.props.foodList}
+        picture={this.state.photo}
       />
     );
   }
