@@ -1,3 +1,0 @@
-export const SET_FOOD_LIST = 'SET_FOOD_LIST';
-export const RESET_FOOD_LIST = 'RESET_FOOD_LIST';
-export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
