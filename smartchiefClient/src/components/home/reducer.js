@@ -5,15 +5,17 @@ export default function homeReducer(state = initialState.home, action) {
   switch (action.type) {
     case actionTypes.SET_FOOD_LIST:
       const foodList = action.list;
+      const loading = action.loading;
       return {
         ...state,
         foodList,
+        loading
       };
 
-    case actionTypes.RESET_FOOD_LIST:
+    case actionTypes.SHOW_SPINNER:
       return {
         ...state,
-        foodList: [],
+        loading: true
       };
 
     default:

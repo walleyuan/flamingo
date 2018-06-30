@@ -20,7 +20,6 @@ export class HomeContainer extends React.Component {
 
   fileChangedHandler = (event) => {
     const file = event.target.files[0];
-    debugger;
     this.props.actions.uploadPhoto(file);
   }
   
@@ -38,6 +37,7 @@ export class HomeContainer extends React.Component {
         fileChangedHandler={this.fileChangedHandler}
         setInputRef={this.setInputRef}
         foodList={this.props.foodList}
+        loading={this.props.loading}
       />
     );
   }
@@ -46,6 +46,7 @@ export class HomeContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     foodList: state.home.foodList,
+    loading: state.home.loading
   };
 }
 
@@ -59,6 +60,7 @@ function mapDispatchToProps(dispatch) {
 
 HomeContainer.propTypes = {
   foodList: PropTypes.arrayOf(PropTypes.shape(PropTypes.any)),
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
